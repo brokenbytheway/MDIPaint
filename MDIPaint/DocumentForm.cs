@@ -31,6 +31,11 @@ namespace MDIPaint
             graphics = Graphics.FromImage(bitmap);
             graphics.Clear(Color.White);
             pictureBox1.Image = bitmap;
+
+            bitmapCursor = new Bitmap(Properties.Resources._290133_art_brush_paint_painting_icon);
+            ptr = bitmapCursor.GetHicon();
+            cur = new Cursor(ptr);
+            pictureBox1.Cursor = cur;
         }
 
         public DocumentForm(MainForm parent)
