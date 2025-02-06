@@ -24,6 +24,8 @@ namespace MDIPaint
         private Bitmap bitmapCursor;
         private IntPtr ptr;
         private Cursor cur;
+        private TextBox textBox = null;
+        private Point tbpoint;
 
         private void SetSize()
         {
@@ -320,33 +322,40 @@ namespace MDIPaint
         private void ShowTextBox(Point location)
         {
             MainForm.pen.Width = MainForm.penAndEraserWidth * scale;
-            TextBox textBox = new TextBox();
+            if (textBox != null)
+            {
+                textBox.Dispose();
+            }
+
+            textBox = new TextBox();
             textBox.Multiline = false;
             textBox.AutoSize = true;
             textBox.BorderStyle = BorderStyle.FixedSingle;
             textBox.Font = new Font("Arial", 14 * scale);
-            textBox.Location = pictureBox1.PointToClient(PointToScreen(location));
+            Point p = pictureBox1.PointToClient(PointToScreen(location));
+            textBox.Location = location;
             textBox.Width = (int)(100 * scale);
+            p = location;
+            p.X = (int)(p.X / scale);
+            p.Y = (int)(p.Y / scale);
+            tbpoint = p;
 
-            textBox.LostFocus += (s, e) => { DrawText(textBox.Text, location); textBox.Dispose(); };
-            textBox.KeyDown += (s, e) => { if (e.KeyCode == Keys.Enter) { DrawText(textBox.Text, location); textBox.Dispose(); } };
+            textBox.LostFocus += (s, e) => { DrawText(textBox.Text); textBox.Dispose(); };
+            textBox.KeyDown += (s, e) => { if (e.KeyCode == Keys.Enter) { DrawText(textBox.Text); textBox.Dispose(); } };
 
             this.Controls.Add(textBox);
             textBox.Focus();
             textBox.BringToFront();
         }
 
-        private void DrawText(string text, Point location)
+        private void DrawText(string text)
         {
             if (string.IsNullOrWhiteSpace(text))
             {
                 return;
             }
 
-            Point p = location;
-            p.X = (int)(p.X / scale);
-            p.Y = (int)(p.Y / scale);
-            graphics.DrawString(text, new Font("Arial", 14), new SolidBrush(MainForm.pen.Color), p);
+            graphics.DrawString(text, new Font("Arial", 14), new SolidBrush(MainForm.pen.Color), tbpoint);
             pictureBox1.Invalidate();
             SetStar();
         }
@@ -549,6 +558,16 @@ namespace MDIPaint
         private void ResizeImage()
         {
             if (bitmap == null) return;
+
+            if (textBox != null)
+            {
+                textBox.Width = (int)(100 * scale);
+                textBox.Font = new Font("Arial", 14 * scale);
+                Point p = tbpoint;
+                p.X = (int)(p.X * scale);
+                p.Y = (int)(p.Y * scale);
+                textBox.Location = p;
+            }
 
             int newWidth = (int)(_bmwidth * scale);
             int newHeight = (int)(_bmheight * scale);
