@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Reflection;
 using System.Windows.Forms;
 
 namespace MDIPaint
@@ -23,7 +22,6 @@ namespace MDIPaint
         private Stack<Point> pixel = new Stack<Point>();
         public string currentFilePath;
         private Bitmap bitmapCursor;
-        private Graphics graphicsCursor;
         private IntPtr ptr;
         private Cursor cur;
 
@@ -495,21 +493,18 @@ namespace MDIPaint
             {
                 case 1: // Кисть
                     bitmapCursor = new Bitmap(Properties.Resources._290133_art_brush_paint_painting_icon);
-                    graphicsCursor = Graphics.FromImage(bitmapCursor);
                     ptr = bitmapCursor.GetHicon();
                     cur = new Cursor(ptr);
                     pictureBox1.Cursor = cur;
                     break;
                 case 2: // Ластик
                     bitmapCursor = new Bitmap(Properties.Resources._9025873_square_icon);
-                    graphicsCursor = Graphics.FromImage(bitmapCursor);
                     ptr = bitmapCursor.GetHicon();
                     cur = new Cursor(ptr);
                     pictureBox1.Cursor = cur;
                     break;
                 case 3: // Заливка
                     bitmapCursor = new Bitmap(Properties.Resources._9025742_paint_bucket_icon1);
-                    graphicsCursor = Graphics.FromImage(bitmapCursor);
                     ptr = bitmapCursor.GetHicon();
                     cur = new Cursor(ptr);
                     pictureBox1.Cursor = cur;
