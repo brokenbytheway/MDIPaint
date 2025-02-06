@@ -118,43 +118,55 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="red" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="290111_favorite_heart_like_love_valentine_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\290111_favorite_heart_like_love_valentine_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="352900_line_shape_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\352900_line_shape_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="2931183_minus_out_smaller_zoom_magnifier_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\2931183_minus_out_smaller_zoom_magnifier_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="2931186_greater_in_plus_zoom_explore_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\2931186_greater_in_plus_zoom_explore_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="7968868_ellipse_adobe illustrator tool_circle_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\7968868_ellipse_adobe illustrator tool_circle_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="7968887_typography_text tool_adobe illustrator tool_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\7968887_typography_text tool_adobe illustrator tool_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="8673419_ic_fluent_eraser_filled_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\8673419_ic_fluent_eraser_filled_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="9025742_paint_bucket_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\9025742_paint_bucket_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="171936_paint_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\171936_paint_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="290111_favorite_heart_like_love_valentine_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\290111_favorite_heart_like_love_valentine_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="8673419_ic_fluent_eraser_filled_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\8673419_ic_fluent_eraser_filled_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="197217_brush_meanicons_paint_art_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\197217_brush_meanicons_paint_art_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="2931186_greater_in_plus_zoom_explore_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\2931186_greater_in_plus_zoom_explore_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="7968887_typography_text tool_adobe illustrator tool_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\7968887_typography_text tool_adobe illustrator tool_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="7968868_ellipse_adobe illustrator tool_circle_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\7968868_ellipse_adobe illustrator tool_circle_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="2931183_minus_out_smaller_zoom_magnifier_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\2931183_minus_out_smaller_zoom_magnifier_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="green" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="171936_paint_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\171936_paint_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="197217_brush_meanicons_paint_art_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\197217_brush_meanicons_paint_art_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_290133_art_brush_paint_painting_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\290133_art_brush_paint_painting_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_9025742_paint_bucket_icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\9025742_paint_bucket_icon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_9025873_square_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\9025873_square_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

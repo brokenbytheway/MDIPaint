@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанных со сборкой.
 [assembly: AssemblyTitle("MDIPaint")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Paint с многооконным интерфейсом")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("НИУ ВШЭ-Пермь")]
 [assembly: AssemblyProduct("MDIPaint")]
 [assembly: AssemblyCopyright("Copyright ©  2025")]
 [assembly: AssemblyTrademark("")]

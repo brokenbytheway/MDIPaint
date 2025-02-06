@@ -143,5 +143,17 @@
   <ItemGroup>
     <None Include="Resources\197217_brush_meanicons_paint_art_icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\9025742_paint_bucket_icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\290133_art_brush_paint_painting_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\9025873_square_icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Drawing.Drawing2D;
 
 namespace MDIPaint
 {
@@ -18,11 +10,16 @@ namespace MDIPaint
     {
         public static Pen pen = new Pen(Color.Black, 1f);
         public static Pen eraser = new Pen(Color.White, 1f);
+        public static float penAndEraserWidth = 1f;
         public static int index = 1;
         public static bool FillShape = false;
 
         public MainForm()
         {
+            pen.StartCap = LineCap.Round;
+            pen.EndCap = LineCap.Round;
+            eraser.StartCap = LineCap.Round;
+            eraser.EndCap = LineCap.Round;
             InitializeComponent();
             this.MdiChildActivate += MainForm_MdiChildActivate;
             UpdateToolStrip();
@@ -35,10 +32,46 @@ namespace MDIPaint
                 var d = child as DocumentForm;
                 if (d != null && d.isModified)
                 {
-                    var result = MessageBox.Show("Вы хотите сохранить изменения в файле?", "Сохранить изменения", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    d.isModified = false;
+                    string fileName = string.IsNullOrEmpty(d.currentFilePath) ? "Безымянный рисунок" : Path.GetFileName(d.currentFilePath);
+                    var result = MessageBox.Show($"Вы хотите сохранить изменения в файле \"{fileName}\"?", "Сохранить изменения", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        d.Save(d.CurrentFilePath);
+                        if (string.IsNullOrEmpty(d.currentFilePath))
+                        {
+                            var dlg = new SaveFileDialog();
+                            dlg.Filter = "JPEG Image (*.jpg)|*.jpg|Bitmap Image (.bmp)|*.bmp";
+                            if (dlg.ShowDialog() == DialogResult.OK)
+                            {
+                                try
+                                {
+                                    d.SaveAs(dlg.FileName);
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show($"Ошибка сохранения: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            try
+                            {
+                                if (d.isModified)
+                                {
+                                    d.Save(d.currentFilePath);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show($"Ошибка сохранения: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        d.Close();
+                    }
+                    else if (result == DialogResult.Cancel)
+                    {
+                        return;
                     }
                 }
             }
@@ -55,6 +88,7 @@ namespace MDIPaint
         {
             var frm = new DocumentForm(this);
             frm.MdiParent = this;
+            frm.UpdateTitle();
             frm.Show();
         }
 
@@ -74,6 +108,11 @@ namespace MDIPaint
                     d.ResizeCanvas(canvasForm.CanvasWidth, canvasForm.CanvasHeight);
                 }
             }
+        }
+
+        private void черныйToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pen.Color = Color.Black;
         }
 
         private void красныйToolStripMenuItem_Click(object sender, EventArgs e)
@@ -118,13 +157,13 @@ namespace MDIPaint
             LayoutMdi(MdiLayout.ArrangeIcons);
         }
 
-        public void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var d = ActiveMdiChild as DocumentForm;
 
             if (d != null)
             {
-                if (string.IsNullOrEmpty(d.CurrentFilePath))
+                if (string.IsNullOrEmpty(d.currentFilePath))
                 {
                     сохранитьКакToolStripMenuItem_Click(sender, e);
                 }
@@ -132,7 +171,10 @@ namespace MDIPaint
                 {
                     try
                     {
-                        d.Save(d.CurrentFilePath);
+                        if (d.isModified)
+                        {
+                            d.Save(d.currentFilePath);
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -180,8 +222,9 @@ namespace MDIPaint
 
         private void trackBar1_ValueChanged(object sender, EventArgs e)
         {
-            pen.Width = trackBar1.Value;
-            eraser.Width = trackBar1.Value;
+            penAndEraserWidth = trackBar1.Value;
+            pen.Width = penAndEraserWidth;
+            eraser.Width = penAndEraserWidth;
         }
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -195,6 +238,7 @@ namespace MDIPaint
                     var newDoc = new DocumentForm(this);
                     newDoc.MdiParent = this;
                     newDoc.LoadFile(dlg.FileName);
+                    newDoc.UpdateTitle();
                     newDoc.Show();
                 }
                 catch (Exception ex)
@@ -235,8 +279,13 @@ namespace MDIPaint
         private void zoomButton_Click(object sender, EventArgs e)
         {
             var d = ActiveMdiChild as DocumentForm;
-            index = 5;
-            d.ChangeCursor();
+            d.ZoomIn();
+        }
+
+        private void nozoomButton_Click(object sender, EventArgs e)
+        {
+            var d = ActiveMdiChild as DocumentForm;
+            d.ZoomOut();
         }
 
         private void lineButton_Click(object sender, EventArgs e)
@@ -278,11 +327,19 @@ namespace MDIPaint
             heartButton.Enabled = !(ActiveMdiChild == null);
             trackBar1.Enabled = !(ActiveMdiChild == null);
             checkBox1.Enabled = !(ActiveMdiChild == null);
+            nozoomButton.Enabled = !(ActiveMdiChild == null);
+            clearButton.Enabled = !(ActiveMdiChild == null);
         }
 
         private void MainForm_MdiChildActivate(object sender, EventArgs e)
         {
             UpdateToolStrip();
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            var d = ActiveMdiChild as DocumentForm;
+            d.Clear();
         }
     }
 }

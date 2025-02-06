@@ -93,6 +93,16 @@ namespace MDIPaint.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _290133_art_brush_paint_painting_icon {
+            get {
+                object obj = ResourceManager.GetObject("_290133_art_brush_paint_painting_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _2931183_minus_out_smaller_zoom_magnifier_icon {
             get {
                 object obj = ResourceManager.GetObject("2931183_minus_out_smaller_zoom_magnifier_icon", resourceCulture);
@@ -156,6 +166,36 @@ namespace MDIPaint.Properties {
         internal static System.Drawing.Bitmap _9025742_paint_bucket_icon {
             get {
                 object obj = ResourceManager.GetObject("9025742_paint_bucket_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _9025742_paint_bucket_icon1 {
+            get {
+                object obj = ResourceManager.GetObject("_9025742_paint_bucket_icon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _9025873_square_icon {
+            get {
+                object obj = ResourceManager.GetObject("_9025873_square_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap black {
+            get {
+                object obj = ResourceManager.GetObject("black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
