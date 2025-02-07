@@ -486,7 +486,8 @@ namespace MDIPaint
 
             if (bitmap != null)
             {
-                g.DrawImage(bitmap, 0, 0);
+                //g.DrawImage(bitmap, 0, 0);
+                g.DrawImage(bitmap, 0, 0, newWidth, newHeight);
             }
             bitmap = newBitmap;
             graphics = Graphics.FromImage(bitmap);
