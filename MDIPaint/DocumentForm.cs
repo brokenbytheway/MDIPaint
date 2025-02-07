@@ -476,8 +476,10 @@ namespace MDIPaint
                 return;
             }
 
-            bmwidth = (int)(newWidth * scale);
-            bmheight = (int)(newHeight * scale);
+            int formWidth = this.Width - this.ClientSize.Width;
+            int formHeight = this.Height - this.ClientSize.Height;
+            bmwidth = _bmwidth = newWidth;
+            bmheight = _bmheight = newHeight;
             Bitmap newBitmap = new Bitmap(newWidth, newHeight);
             Graphics g = Graphics.FromImage(newBitmap);
             g.Clear(Color.White);
@@ -489,14 +491,12 @@ namespace MDIPaint
             bitmap = newBitmap;
             graphics = Graphics.FromImage(bitmap);
             pictureBox1.Image = bitmap;
-            pictureBox1.Width = bmwidth;
-            pictureBox1.Height = bmheight;
+            pictureBox1.Width = (int)(newWidth * scale);
+            pictureBox1.Height = (int)(newHeight * scale);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
 
-            int formWidth = this.Width - this.ClientSize.Width;
-            int formHeight = this.Height - this.ClientSize.Height;
-
-            this.Width = newWidth + formWidth;
-            this.Height = newHeight + formHeight;
+            this.Width = (int)(newWidth * scale) + formWidth;
+            this.Height = (int)(newHeight * scale) + formHeight;
 
             pictureBox1.Invalidate();
         }
@@ -559,6 +559,8 @@ namespace MDIPaint
         {
             if (bitmap == null) return;
 
+            int formWidth = this.Width - this.ClientSize.Width;
+            int formHeight = this.Height - this.ClientSize.Height;
             if (textBox != null)
             {
                 textBox.Width = (int)(100 * scale);
@@ -575,9 +577,6 @@ namespace MDIPaint
             pictureBox1.Width = newWidth;
             pictureBox1.Height = newHeight;
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-
-            int formWidth = this.Width - this.ClientSize.Width;
-            int formHeight = this.Height - this.ClientSize.Height;
 
             this.Width = newWidth + formWidth;
             this.Height = newHeight + formHeight;
