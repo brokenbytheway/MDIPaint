@@ -70,6 +70,13 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PluginConfig.cs" />
+    <Compile Include="PluginsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PluginsForm.Designer.cs">
+      <DependentUpon>PluginsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutForm.resx">
@@ -154,6 +161,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\9025873_square_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PluginInterface\PluginInterface.csproj">
+      <Project>{28a53b69-8168-453f-8d10-98032e8b74e5}</Project>
+      <Name>PluginInterface</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

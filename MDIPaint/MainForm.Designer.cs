@@ -49,30 +49,30 @@
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.clearButton = new System.Windows.Forms.Button();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.черныйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.красныйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.синийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.зеленыйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.другойToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.brushButton = new System.Windows.Forms.ToolStripButton();
             this.eraserButton = new System.Windows.Forms.ToolStripButton();
             this.bucketButton = new System.Windows.Forms.ToolStripButton();
             this.textButton = new System.Windows.Forms.ToolStripButton();
             this.zoomButton = new System.Windows.Forms.ToolStripButton();
             this.nozoomButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.lineButton = new System.Windows.Forms.ToolStripButton();
             this.ellipseButton = new System.Windows.Forms.ToolStripButton();
             this.heartButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.clearButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -230,7 +230,7 @@
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
             this.оПрограммеToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе...";
             this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
@@ -267,70 +267,6 @@
             this.toolStripLabel1.Size = new System.Drawing.Size(36, 47);
             this.toolStripLabel1.Text = "Цвет:";
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 50);
-            // 
-            // toolStripLabel2
-            // 
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(86, 47);
-            this.toolStripLabel2.Text = "Инструменты:";
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 50);
-            // 
-            // toolStripLabel3
-            // 
-            this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(53, 47);
-            this.toolStripLabel3.Text = "Фигуры:";
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 50);
-            // 
-            // toolStripLabel4
-            // 
-            this.toolStripLabel4.Name = "toolStripLabel4";
-            this.toolStripLabel4.Size = new System.Drawing.Size(91, 47);
-            this.toolStripLabel4.Text = "Толщина пера:";
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.trackBar1.Location = new System.Drawing.Point(593, 29);
-            this.trackBar1.Maximum = 12;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(130, 45);
-            this.trackBar1.TabIndex = 4;
-            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(729, 29);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(102, 17);
-            this.checkBox1.TabIndex = 6;
-            this.checkBox1.Text = "Заливка фигур";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // clearButton
-            // 
-            this.clearButton.Location = new System.Drawing.Point(729, 49);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(102, 23);
-            this.clearButton.TabIndex = 8;
-            this.clearButton.Text = "Очистить";
-            this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
-            // 
             // toolStripDropDownButton1
             // 
             this.toolStripDropDownButton1.AutoSize = false;
@@ -352,7 +288,7 @@
             this.черныйToolStripMenuItem.Image = global::MDIPaint.Properties.Resources.black;
             this.черныйToolStripMenuItem.Name = "черныйToolStripMenuItem";
             this.черныйToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.черныйToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.черныйToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.черныйToolStripMenuItem.Text = "Черный";
             this.черныйToolStripMenuItem.Click += new System.EventHandler(this.черныйToolStripMenuItem_Click);
             // 
@@ -362,7 +298,7 @@
             this.красныйToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.красныйToolStripMenuItem.Name = "красныйToolStripMenuItem";
             this.красныйToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.красныйToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.красныйToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.красныйToolStripMenuItem.Text = "Красный";
             this.красныйToolStripMenuItem.Click += new System.EventHandler(this.красныйToolStripMenuItem_Click);
             // 
@@ -372,7 +308,7 @@
             this.синийToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.синийToolStripMenuItem.Name = "синийToolStripMenuItem";
             this.синийToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
-            this.синийToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.синийToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.синийToolStripMenuItem.Text = "Синий";
             this.синийToolStripMenuItem.Click += new System.EventHandler(this.синийToolStripMenuItem_Click);
             // 
@@ -382,7 +318,7 @@
             this.зеленыйToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.зеленыйToolStripMenuItem.Name = "зеленыйToolStripMenuItem";
             this.зеленыйToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
-            this.зеленыйToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.зеленыйToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.зеленыйToolStripMenuItem.Text = "Зеленый";
             this.зеленыйToolStripMenuItem.Click += new System.EventHandler(this.зеленыйToolStripMenuItem_Click);
             // 
@@ -390,9 +326,20 @@
             // 
             this.другойToolStripMenuItem.Name = "другойToolStripMenuItem";
             this.другойToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.другойToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.другойToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.другойToolStripMenuItem.Text = "Другой...";
             this.другойToolStripMenuItem.Click += new System.EventHandler(this.другойToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 50);
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(86, 47);
+            this.toolStripLabel2.Text = "Инструменты:";
             // 
             // brushButton
             // 
@@ -460,6 +407,17 @@
             this.nozoomButton.Text = "Масштаб-";
             this.nozoomButton.Click += new System.EventHandler(this.nozoomButton_Click);
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 50);
+            // 
+            // toolStripLabel3
+            // 
+            this.toolStripLabel3.Name = "toolStripLabel3";
+            this.toolStripLabel3.Size = new System.Drawing.Size(53, 47);
+            this.toolStripLabel3.Text = "Фигуры:";
+            // 
             // lineButton
             // 
             this.lineButton.AutoSize = false;
@@ -492,6 +450,48 @@
             this.heartButton.Size = new System.Drawing.Size(30, 30);
             this.heartButton.Text = "Сердце";
             this.heartButton.Click += new System.EventHandler(this.heartButton_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 50);
+            // 
+            // toolStripLabel4
+            // 
+            this.toolStripLabel4.Name = "toolStripLabel4";
+            this.toolStripLabel4.Size = new System.Drawing.Size(91, 47);
+            this.toolStripLabel4.Text = "Толщина пера:";
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.trackBar1.Location = new System.Drawing.Point(593, 29);
+            this.trackBar1.Maximum = 12;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(130, 45);
+            this.trackBar1.TabIndex = 4;
+            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(729, 29);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(102, 17);
+            this.checkBox1.TabIndex = 6;
+            this.checkBox1.Text = "Заливка фигур";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // clearButton
+            // 
+            this.clearButton.Location = new System.Drawing.Point(729, 49);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(102, 23);
+            this.clearButton.TabIndex = 8;
+            this.clearButton.Text = "Очистить";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // MainForm
             // 

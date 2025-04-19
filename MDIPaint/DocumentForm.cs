@@ -1,7 +1,10 @@
-﻿using System;
+﻿using PluginInterface;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace MDIPaint
@@ -16,9 +19,9 @@ namespace MDIPaint
         public bool isModified = false;
         public float scale = 1.0f;
         private int bmwidth = 800;
-        private int bmheight = 450;
+        private int bmheight = 425;
         private int _bmwidth = 800;
-        private int _bmheight = 450;
+        private int _bmheight = 425;
         private Stack<Point> pixel = new Stack<Point>();
         public string currentFilePath;
         private Bitmap bitmapCursor;
@@ -26,10 +29,13 @@ namespace MDIPaint
         private Cursor cur;
         private TextBox textBox = null;
         private Point tbpoint;
+        Dictionary<string, IPlugin> plugins = new Dictionary<string, IPlugin>();
+        private string pluginsConfigPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins.config");
+        private PluginConfig pluginsConfig;
 
         private void SetSize()
         {
-            bitmap = new Bitmap(800, 450);
+            bitmap = new Bitmap(800, 425);
             graphics = Graphics.FromImage(bitmap);
             graphics.Clear(Color.White);
             pictureBox1.Image = bitmap;
@@ -44,6 +50,8 @@ namespace MDIPaint
         {
             InitializeComponent();
             SetSize();
+            FindPlugins();
+            CreatePluginsMenu();
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
@@ -304,14 +312,14 @@ namespace MDIPaint
                 paint = false;
                 scale = 1.0f;
                 isModified = false;
-                var image = new Bitmap(path);
-                bitmap = new Bitmap(image);
+                //var image = new Bitmap(path);
+                bitmap = new Bitmap(path);
                 graphics = Graphics.FromImage(bitmap);
                 pictureBox1.Image = bitmap;
                 bmwidth = _bmwidth = bitmap.Width;
                 bmheight = _bmheight = bitmap.Height;
                 currentFilePath = path;
-                ResizeImage();
+                //ResizeImage();
             }
             catch (Exception ex)
             {
@@ -492,12 +500,12 @@ namespace MDIPaint
             bitmap = newBitmap;
             graphics = Graphics.FromImage(bitmap);
             pictureBox1.Image = bitmap;
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.Width = (int)(newWidth * scale);
             pictureBox1.Height = (int)(newHeight * scale);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
 
             this.Width = (int)(newWidth * scale) + formWidth;
-            this.Height = (int)(newHeight * scale) + formHeight;
+            this.Height = (int)(newHeight * scale) + formHeight + 25;
 
             pictureBox1.Invalidate();
         }
@@ -575,12 +583,12 @@ namespace MDIPaint
             int newWidth = (int)(_bmwidth * scale);
             int newHeight = (int)(_bmheight * scale);
 
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.Width = newWidth;
             pictureBox1.Height = newHeight;
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
 
             this.Width = newWidth + formWidth;
-            this.Height = newHeight + formHeight;
+            this.Height = newHeight + formHeight + 25;
 
             pictureBox1.Invalidate();
         }
@@ -609,6 +617,118 @@ namespace MDIPaint
         {
             graphics.Clear(Color.White);
             pictureBox1.Image = bitmap;
+        }
+
+        void FindPlugins()
+        {
+            pluginsConfig = PluginConfig.Load(pluginsConfigPath);
+
+            // папка с плагинами
+            string folder = AppDomain.CurrentDomain.BaseDirectory;
+
+            // dll-файлы в этой папке
+            string[] files = Directory.GetFiles(folder, "*.dll");
+
+            foreach (string file in files)
+            {
+                try
+                {
+                    Assembly assembly = Assembly.LoadFile(file);
+
+                    foreach (Type type in assembly.GetTypes())
+                    {
+                        Type iface = type.GetInterface("PluginInterface.IPlugin");
+
+                        if (iface != null)
+                        {
+                            IPlugin plugin = (IPlugin)Activator.CreateInstance(type);
+
+                            // Проверяем, нужно ли загружать этот плагин
+                            bool shouldLoad = pluginsConfig.AutoLoad ||
+                                pluginsConfig.Plugins.Exists(p => p.Name == plugin.Name && p.Enabled);
+
+                            if (true)
+                            {
+                                plugins.Add(plugin.Name, plugin);
+
+                                // Добавляем в конфиг, если его там нет
+                                if (!pluginsConfig.Plugins.Exists(p => p.Name == plugin.Name))
+                                {
+                                    var versionAttr = (VersionAttribute)Attribute.GetCustomAttribute(
+                                        type, typeof(VersionAttribute));
+                                    string version = versionAttr != null ?
+                                        $"{versionAttr.Major}.{versionAttr.Minor}" : "1.0";
+
+                                    pluginsConfig.Plugins.Add(new PluginInfo
+                                    {
+                                        Name = plugin.Name,
+                                        Author = plugin.Author,
+                                        Version = version,
+                                        Path = file,
+                                        Enabled = shouldLoad
+                                    });
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка загрузки плагина\n" + ex.Message);
+                }
+            }
+
+            // Сохраняем конфиг, если он был создан или обновлен
+            pluginsConfig.Save(pluginsConfigPath);
+        }
+
+        private void CreatePluginsMenu()
+        {
+            фильтрыToolStripMenuItem.DropDownItems.Clear();
+
+            // Добавляем пункт для управления плагинами
+            var manageItem = new ToolStripMenuItem("Управление плагинами...");
+            manageItem.Click += (sender, e) =>
+            {
+                var pluginsForm = new PluginsForm(pluginsConfig, pluginsConfigPath, plugins);
+                if (pluginsForm.ShowDialog() == DialogResult.OK)
+                {
+                    // Перезагружаем плагины, если конфиг изменился
+                    plugins.Clear();
+                    FindPlugins();
+                    CreatePluginsMenu();
+                }
+            };
+            фильтрыToolStripMenuItem.DropDownItems.Add(manageItem);
+
+            // Добавляем разделитель
+            фильтрыToolStripMenuItem.DropDownItems.Add(new ToolStripSeparator());
+
+            // Добавляем плагины
+            foreach (var p in plugins)
+            {
+                foreach (var elem in pluginsConfig.Plugins)
+                {
+                    if (elem.Name == p.Value.Name && elem.Enabled)
+                    {
+                        var item = фильтрыToolStripMenuItem.DropDownItems.Add(p.Value.Name);
+                        item.Click += OnPluginClick;
+                        break;
+                    }
+                }
+            }
+        }
+
+        private void OnPluginClick(object sender, EventArgs args)
+        {
+            IPlugin plugin = plugins[((ToolStripMenuItem)sender).Text];
+            plugin.Transform((Bitmap)pictureBox1.Image, ref isModified);
+            if (isModified)
+            {
+                SetStar();
+            }
+            pictureBox1.Refresh();
+
         }
     }
 }
