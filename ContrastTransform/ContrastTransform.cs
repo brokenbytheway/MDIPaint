@@ -93,11 +93,11 @@ namespace ContrastTransform
                         newBlue = Math.Max(0, Math.Min(255, newBlue));
 
                         // Устанавливаем новые значения
-                        pixels[x] = (byte)newBlue;
-                        pixels[x + 1] = (byte)newGreen;
-                        pixels[x + 2] = (byte)newRed;
+                        pixels[xi] = (byte)newBlue;
+                        pixels[xi + 1] = (byte)newGreen;
+                        pixels[xi + 2] = (byte)newRed;
                         if (bytesPerPixel == 4)
-                            pixels[x + 3] = oldAlpha;
+                            pixels[xi + 3] = oldAlpha;
 
                         // Обновляем прогресс
                         int newProgress = (int)(Interlocked.Increment(ref processedPixels) * 100 / totalPixels);

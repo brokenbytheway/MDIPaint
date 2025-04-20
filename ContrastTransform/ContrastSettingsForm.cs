@@ -143,33 +143,7 @@ namespace ContrastTransform
                 }
             }
         }
-        //private Bitmap ApplyContrastParallelSafe(Bitmap bitmap, float contrast)
-        //{
-        //    BitmapData bmpData = null;
-        //    try
-        //    {
-        //        bmpData = bitmap.LockBits(/*...*/);
-        //        byte[] pixelData = new byte[bmpData.Stride * bmpData.Height];
-        //        Marshal.Copy(bmpData.Scan0, pixelData, 0, pixelData.Length);
 
-        //        Parallel.For(0, bmpData.Height, y =>
-        //        {
-        //            int row = y * bmpData.Stride;
-        //            for (int x = 0; x < bmpData.Width * 4; x += 4)
-        //            {
-        //                // Обработка пикселей через массив byte[]
-        //            }
-        //        });
-
-        //        Marshal.Copy(pixelData, 0, bmpData.Scan0, pixelData.Length);
-        //        return bitmap;
-        //    }
-        //    finally
-        //    {
-        //        if (bmpData != null && bitmap != null)
-        //            bitmap.UnlockBits(bmpData);
-        //    }
-        //}
         private void buttonOK_Click(object sender, EventArgs e)
         {
             _previewCancellationTokenSource?.Cancel();
