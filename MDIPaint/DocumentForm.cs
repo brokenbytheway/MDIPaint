@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -312,14 +313,14 @@ namespace MDIPaint
                 paint = false;
                 scale = 1.0f;
                 isModified = false;
-                //var image = new Bitmap(path);
-                bitmap = new Bitmap(path);
+                var image = new Bitmap(path);
+                bitmap = new Bitmap(image);
+                image.Dispose();
                 graphics = Graphics.FromImage(bitmap);
                 pictureBox1.Image = bitmap;
                 bmwidth = _bmwidth = bitmap.Width;
                 bmheight = _bmheight = bitmap.Height;
                 currentFilePath = path;
-                //ResizeImage();
             }
             catch (Exception ex)
             {
@@ -644,30 +645,25 @@ namespace MDIPaint
                             IPlugin plugin = (IPlugin)Activator.CreateInstance(type);
 
                             // Проверяем, нужно ли загружать этот плагин
-                            bool shouldLoad = pluginsConfig.AutoLoad ||
-                                pluginsConfig.Plugins.Exists(p => p.Name == plugin.Name && p.Enabled);
+                            bool shouldLoad = pluginsConfig.AutoLoad || pluginsConfig.Plugins.Exists(p => p.Name == plugin.Name && p.Enabled);
 
-                            if (true)
+                            plugins.Add(plugin.Name, plugin);
+
+                            // Добавляем в конфиг, если его там нет
+                            if (!pluginsConfig.Plugins.Exists(p => p.Name == plugin.Name))
                             {
-                                plugins.Add(plugin.Name, plugin);
+                                var versionAttr = (VersionAttribute)Attribute.GetCustomAttribute(
+                                    type, typeof(VersionAttribute));
+                                string version = versionAttr != null ?
+                                    $"{versionAttr.Major}.{versionAttr.Minor}" : "1.0";
 
-                                // Добавляем в конфиг, если его там нет
-                                if (!pluginsConfig.Plugins.Exists(p => p.Name == plugin.Name))
+                                pluginsConfig.Plugins.Add(new PluginInfo
                                 {
-                                    var versionAttr = (VersionAttribute)Attribute.GetCustomAttribute(
-                                        type, typeof(VersionAttribute));
-                                    string version = versionAttr != null ?
-                                        $"{versionAttr.Major}.{versionAttr.Minor}" : "1.0";
-
-                                    pluginsConfig.Plugins.Add(new PluginInfo
-                                    {
-                                        Name = plugin.Name,
-                                        Author = plugin.Author,
-                                        Version = version,
-                                        Path = file,
-                                        Enabled = shouldLoad
-                                    });
-                                }
+                                    Name = plugin.Name,
+                                    Author = plugin.Author,
+                                    Version = version,
+                                    Enabled = shouldLoad
+                                });
                             }
                         }
                     }
@@ -709,7 +705,7 @@ namespace MDIPaint
             {
                 foreach (var elem in pluginsConfig.Plugins)
                 {
-                    if (elem.Name == p.Value.Name && elem.Enabled)
+                    if (pluginsConfig.AutoLoad || (elem.Name == p.Value.Name && elem.Enabled))
                     {
                         var item = фильтрыToolStripMenuItem.DropDownItems.Add(p.Value.Name);
                         item.Click += OnPluginClick;

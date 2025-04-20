@@ -55,7 +55,6 @@ namespace MDIPaint
         public string Name { get; set; }
         public string Author { get; set; }
         public string Version { get; set; }
-        public string Path { get; set; }
         public bool Enabled { get; set; }
     }
 }

@@ -29,14 +29,13 @@
         private void InitializeComponent()
         {
             this.pluginsDataGridView = new System.Windows.Forms.DataGridView();
+            this.autoLoadCheckBox = new System.Windows.Forms.CheckBox();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.enabledColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.authorColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.versionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pathColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.autoLoadCheckBox = new System.Windows.Forms.CheckBox();
-            this.saveButton = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pluginsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,14 +48,45 @@
             this.enabledColumn,
             this.nameColumn,
             this.authorColumn,
-            this.versionColumn,
-            this.pathColumn});
+            this.versionColumn});
             this.pluginsDataGridView.Location = new System.Drawing.Point(12, 35);
             this.pluginsDataGridView.Name = "pluginsDataGridView";
             this.pluginsDataGridView.RowHeadersVisible = false;
             this.pluginsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.pluginsDataGridView.Size = new System.Drawing.Size(560, 250);
             this.pluginsDataGridView.TabIndex = 0;
+            // 
+            // autoLoadCheckBox
+            // 
+            this.autoLoadCheckBox.AutoSize = true;
+            this.autoLoadCheckBox.Location = new System.Drawing.Point(12, 12);
+            this.autoLoadCheckBox.Name = "autoLoadCheckBox";
+            this.autoLoadCheckBox.Size = new System.Drawing.Size(235, 17);
+            this.autoLoadCheckBox.TabIndex = 1;
+            this.autoLoadCheckBox.Text = "Автоматическая загрузка всех плагинов";
+            this.autoLoadCheckBox.UseVisualStyleBackColor = true;
+            this.autoLoadCheckBox.CheckedChanged += new System.EventHandler(this.autoLoadCheckBox_CheckedChanged);
+            // 
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(416, 291);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(75, 23);
+            this.saveButton.TabIndex = 2;
+            this.saveButton.Text = "Сохранить";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelButton.Location = new System.Drawing.Point(497, 291);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.TabIndex = 3;
+            this.cancelButton.Text = "Отмена";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // enabledColumn
             // 
@@ -84,45 +114,6 @@
             this.versionColumn.Name = "versionColumn";
             this.versionColumn.ReadOnly = true;
             this.versionColumn.Width = 60;
-            // 
-            // pathColumn
-            // 
-            this.pathColumn.HeaderText = "Путь";
-            this.pathColumn.Name = "pathColumn";
-            this.pathColumn.ReadOnly = true;
-            this.pathColumn.Width = 200;
-            // 
-            // autoLoadCheckBox
-            // 
-            this.autoLoadCheckBox.AutoSize = true;
-            this.autoLoadCheckBox.Location = new System.Drawing.Point(12, 12);
-            this.autoLoadCheckBox.Name = "autoLoadCheckBox";
-            this.autoLoadCheckBox.Size = new System.Drawing.Size(193, 17);
-            this.autoLoadCheckBox.TabIndex = 1;
-            this.autoLoadCheckBox.Text = "Автоматическая загрузка всех плагинов";
-            this.autoLoadCheckBox.UseVisualStyleBackColor = true;
-            this.autoLoadCheckBox.CheckedChanged += new System.EventHandler(this.autoLoadCheckBox_CheckedChanged);
-            // 
-            // saveButton
-            // 
-            this.saveButton.Location = new System.Drawing.Point(416, 291);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(75, 23);
-            this.saveButton.TabIndex = 2;
-            this.saveButton.Text = "Сохранить";
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(497, 291);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 3;
-            this.cancelButton.Text = "Отмена";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // PluginsForm
             // 
@@ -157,6 +148,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn authorColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn versionColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pathColumn;
     }
 }

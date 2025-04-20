@@ -47,8 +47,7 @@ namespace MDIPaint
                     enabled,
                     plugin.Name,
                     plugin.Author,
-                    version,
-                    plugin.GetType().Assembly.Location
+                    version
                 );
             }
 
@@ -77,7 +76,6 @@ namespace MDIPaint
                             Name = row.Cells[1].Value.ToString(),
                             Author = row.Cells[2].Value.ToString(),
                             Version = row.Cells[3].Value.ToString(),
-                            Path = row.Cells[4].Value.ToString(),
                             Enabled = enabled
                         });
                     }

@@ -78,7 +78,7 @@ namespace ContrastTransform
                         byte oldBlue = pixels[xi];
                         byte oldGreen = pixels[xi + 1];
                         byte oldRed = pixels[xi + 2];
-                        byte oldAlpha = bytesPerPixel == 4 ? pixels[x + 3] : (byte)255;
+                        byte oldAlpha = bytesPerPixel == 4 ? pixels[xi + 3] : (byte)255;
 
                         double t = (1 - contrast) / 2;
 
